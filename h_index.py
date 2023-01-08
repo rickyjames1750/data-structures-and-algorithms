@@ -20,6 +20,29 @@ Here's a starting point:
 """
 
 def hIndex(publications):
+    # Gets the len of how many publications they have
+    n = len(publications)
+    # Creates our citation array with adding one more spot to it since starting at zero 
+    citations = [0] * (n + 1)
+
+    # Looping through the publications 
+    for pub in publications:
+        if pub < n:
+            citations[pub] += 1
+        else: 
+            citations[n] += 1
+    
+    # Start at zero to iterate from right to left 
+    total = 0
+    i = n
+    while i >= 0:
+        total += citations[i]
+        # If the total is greater than the index then we just return i 
+        if total >= i:
+            return i
+        i -= 1
+    return i
 
 
-print hIndex([5, 3, 3, 1, 0])
+print (hIndex([5, 3, 3, 1, 0]))
+# 3
