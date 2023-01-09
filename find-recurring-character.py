@@ -22,7 +22,7 @@ def first_recurring_char(s):
         if c in seen_so_far:
             return c
         seen_so_far.add(c)
-    
+    # Else return none 
     return None
 
 print(first_recurring_char("qwertty"))
