@@ -16,6 +16,14 @@ Output: None
 """
 
 def first_recurring_char(s):
+    seen_so_far = set()
+
+    for c in s:
+        if c in seen_so_far:
+            return c
+        seen_so_far.add(c)
+    
+    return None
 
 print(first_recurring_char("qwertty"))
 # t
