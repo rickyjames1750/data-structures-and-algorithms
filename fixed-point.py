@@ -11,7 +11,20 @@ Here is a starting point:
 
 """
 
-def find_fixed_point(nums):
+def helper(low, high, nums):
+    if low == high:
+        return None
+    mid = (low + high)//2
+    if nums[mid] == mid:
+        return mid
+    if nums[mid] < mid:
+        return helper(mid + 1, high, nums)
+    return helper(low, mid, nums)
 
-print find_fixed_point([-5, 1, 3, 4])
+def find_fixed_point(nums):
+    return helper(0, len(nums), nums)
+
+
+print (find_fixed_point([-5, 1, 3, 4]))
+print (find_fixed_point([-5, -4, 0, 1, 4, 10, 25]))
 # 1
