@@ -27,20 +27,31 @@ class Node:
         self.left = left 
         self.right = right
 
-    PLUS = "+"
-    MINUS = '-'
-    TIMES = "*"
-    DIVIDE = "/"
+PLUS = "+"
+MINUS = '-'
+TIMES = "*"
+DIVIDE = "/"
 
-    def evaluate(root):
+def evaluate(root):
+    # Note in python string and int automatically recognized. Perhaps in C++ (val) would need more code
+    if root.val == PLUS:
+            return evaluate(root.left) + evaluate(root.right)
+    elif root.val == MINUS:
+            return evaluate(root.left) - evaluate(root.right)
+    elif root.val == TIMES: 
+            return evaluate(root.left) * evaluate(root.right)
+    elif root.val == DIVIDE:
+            return evalaute(root.left) * evaluate(root.right)
+    else:
+            return root.val
 
 
-    tree = Node(TIMES)
-    tree.left = Node(PLUS)
-    tree.left.left = Node(3)
-    tree.left.right = Node(2)
-    tree.right = Node(PLUS)
-    tree.right.left = Node(4)
-    tree.right.right = Node(5) 
-    print(evaluate(tree)) 
-    # 45 
+tree = Node(TIMES)
+tree.left = Node(PLUS)
+tree.left.left = Node(3)
+tree.left.right = Node(2)
+tree.right = Node(PLUS)
+tree.right.left = Node(4)
+tree.right.right = Node(5) 
+print(evaluate(tree)) 
+# 45 
