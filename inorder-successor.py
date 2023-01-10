@@ -19,6 +19,20 @@ class Node:
         return f"(Value: {self.value}, Left: {self.left} Right: {self.right})"
 
 def inorder_successor(node):
+    if node.right:
+        curr = node.right
+        while curr.left:
+            curr = curr.left
+        return curr
+    
+    parent = node.parent
+    curr = node
+    while parent and parent.left is not curr:
+        curr = parent
+        parent = parent.parent
+    return parent
+
+
 
 tree = Node(3)
 tree.left = Node(2)
@@ -36,7 +50,7 @@ tree.right.right.parent = tree.right
 #  /       \
 # 1         5 
 # 
-print(inorder_successor(tree.left))
+print(inorder_successor(tree.left).value)
 # 3
-print(inorder_successor(tree.right))
+print(inorder_successor(tree.right).value)
 # 5
