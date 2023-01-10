@@ -9,7 +9,20 @@ Output: 77245217
 
 """
 
-def largestNum(nums):
+from functools import cmp_to_key
 
-print largestNum([17, 7, 45, 72])
+def largestNum(nums):
+    def compare(a, b):
+        if str(a) + str(b) < str(b) + str(a):
+            return 1
+        else:
+            return -1
+
+        str_nums = [str(n) for n in sorted(nums, key=cmp_to_key(compare))]
+        return "".join(str_nums)
+
+
+print(largestNum([17, 7, 45, 72]))
+print(largestNum([17, 7, 2, 45, 78]))
+print(largestNum([97, 7, 2, 45, 78]))
 # 77245217
