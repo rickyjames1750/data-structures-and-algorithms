@@ -20,3 +20,6 @@ class Solution:
                         counter += 1
                         sinkIsland(grid, i, j)
         return counter
+
+
+        
